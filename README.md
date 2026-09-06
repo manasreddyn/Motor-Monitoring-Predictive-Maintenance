@@ -16,8 +16,6 @@ The system combines local monitoring with IoT/cloud connectivity:
 - Blynk IoT dashboard
 - Google Sheets historical logging
 
-> **Important:** The current implementation is condition monitoring and threshold-based fault protection. Historical data logging provides a foundation for future predictive analytics; it does not currently implement a machine-learning prediction model.
-
 ## System Architecture
 
 ```text
@@ -35,10 +33,10 @@ The system combines local monitoring with IoT/cloud connectivity:
                     ┌─────▼─────┐
                     │  ESP32-S3 │
                     │           │
-                    │ Calibration
-                    │ Filtering
-                    │ Processing
-                    │ Fault Logic
+                    │Calibration|
+                    │Filtering  |
+                    │Processing |
+                    │Fault Logic|
                     └─────┬─────┘
                           │
              ┌────────────┼─────────────┐
@@ -46,7 +44,7 @@ The system combines local monitoring with IoT/cloud connectivity:
           Hall RPM      Relay       LCD + LEDs
              │        Protection     Local Status
              │
-             └────────────┬─────────────┐
+             └────────────┬─────────────
                           │
                      Wi-Fi / Internet
                           │
@@ -137,30 +135,7 @@ The firmware sends JSON data containing:
   "status": "NORMAL"
 }
 ```
-
 The Google Apps Script endpoint appends these values to a Google Sheet.
-
-## Repository Structure
-
-```text
-Motor-Monitoring-Predictive-Maintenance/
-├── README.md
-├── .gitignore
-├── LICENSE
-├── firmware/
-│   ├── motor_monitoring.ino
-│   ├── secrets.h
-│   ├── secrets.h.example
-│   └── README.md
-├── google-apps-script/
-│   ├── Code.gs
-│   └── README.md
-├── hardware/
-│   ├── pinout.md
-│   └── bill-of-materials.md
-└── docs/
-    └── project-report.docx
-```
 
 ## Firmware Setup
 
@@ -171,12 +146,9 @@ Motor-Monitoring-Predictive-Maintenance/
    - LiquidCrystal_I2C
    - I2Cdev
    - MPU6050
-4. Copy `firmware/secrets.h.example` to `firmware/secrets.h`.
-5. Add your own Blynk and Wi-Fi credentials.
-6. Add your Google Apps Script Web App URL.
-7. Upload `firmware/motor_monitoring.ino`.
-
-**Never commit your real `secrets.h` to GitHub.**
+4. Add your own Blynk and Wi-Fi credentials.
+5. Add your Google Apps Script Web App URL.
+6. Upload `firmware/motor_monitoring.ino`.
 
 ## Safety
 
