@@ -18,45 +18,8 @@ The system combines local monitoring with IoT/cloud connectivity:
 
 ## System Architecture
 
-```text
-                 ┌──────────────────┐
-                 │     DC Motor     │
-                 └────────┬─────────┘
-                          │
-          ┌───────────────┼────────────────┐
-          │               │                │
-       Current        Temperature       Vibration
-       ACS712             LM35           MPU6050
-          │               │                │
-          └───────────────┼────────────────┘
-                          │
-                    ┌─────▼─────┐
-                    │  ESP32-S3 │
-                    │           │
-                    │Calibration|
-                    │Filtering  |
-                    │Processing |
-                    │Fault Logic|
-                    │Calibration|
-                    │Filtering  |
-                    │Processing |
-                    │Fault Logic|
-                    └─────┬─────┘
-                          │
-             ┌────────────┼─────────────┐
-             │            │             │
-          Hall RPM      Relay       LCD + LEDs
-             │        Protection     Local Status
-             │                          |
-             └────────────┬─────────────
-                          │
-                     Wi-Fi / Internet
-                          │
-                  ┌───────┴────────┐
-                  │                │
-                Blynk         Google Sheets
-              Dashboard        Data Logging
-```
+<img width="4144" height="5531" alt="diagram" src="https://github.com/user-attachments/assets/f5b71ebb-b14c-4e5c-9cb6-434b9586bbff" />
+
 
 ## Firmware Setup
 
