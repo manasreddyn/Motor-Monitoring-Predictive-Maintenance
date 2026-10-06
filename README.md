@@ -18,40 +18,7 @@ The system combines local monitoring with IoT/cloud connectivity:
 
 ## System Architecture
 
-```text
-                 ┌──────────────────┐
-                 │     DC Motor     │
-                 └────────┬─────────┘
-                          │
-          ┌───────────────┼────────────────┐
-          │               │                │
-       Current        Temperature       Vibration
-       ACS712             LM35           MPU6050
-          │               │                │
-          └───────────────┼────────────────┘
-                          │
-                    ┌─────▼─────┐
-                    │  ESP32-S3 │
-                    │           │
-                    │Calibration|
-                    │Filtering  |
-                    │Processing |
-                    │Fault Logic|
-                    └─────┬─────┘
-                          │
-             ┌────────────┼─────────────┐
-             │            │             │
-          Hall RPM      Relay       LCD + LEDs
-             │        Protection     Local Status
-             │
-             └────────────┬─────────────
-                          │
-                     Wi-Fi / Internet
-                          │
-                  ┌───────┴────────┐
-                  │                │
-                Blynk         Google Sheets
-              Dashboard        Data Logging
+[![Architecture diagram of manasreddyn/motor-monitoring-predictive-maintenance](https://gitdiagram.com/manasreddyn/motor-monitoring-predictive-maintenance/diagram.png)](https://gitdiagram.com/manasreddyn/motor-monitoring-predictive-maintenance?utm_source=readme&utm_medium=picture)
 ```
 
 ## Hardware
